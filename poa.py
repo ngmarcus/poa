@@ -32,8 +32,6 @@ def throw_invalid_format():
     raise Exception("Required format: -iv <initialization vector> -ct <ciphertext>")
 
 def main(iv, ciphertext):
-    # initial_state, first = given ciphertext
-    # first = "f18ddd40407bb0a25eb9838ac3d6b210d427baf946597b08cfc082d16ba6de5217d3a3259ba9347d05dc2c2121208d7350fdb00c2113425226e11f3c92570640"
     print("** AES-128-CBC Padding Oracle Attack **")
     ct_blocks = [ciphertext[i:i+32] for i in range(0, len(ciphertext), 32)] 
     assert len(ct_blocks[0]) == len(ct_blocks[1]) == len(ct_blocks[2]) == len(ct_blocks[3]) == 32 
@@ -131,4 +129,4 @@ if __name__ == '__main__':
     iv_index = sys.argv.index("-iv") + 1
     ct_index = sys.argv.index("-ct") + 1
     main(sys.argv[iv_index].decode(), sys.argv[ct_index].decode())
-    #main("e74eb5469dec2d518c0f94f466eaa643", "f18ddd40407bb0a25eb9838ac3d6b210d427baf946597b08cfc082d16ba6de5217d3a3259ba9347d05dc2c2121208d7350fdb00c2113425226e11f3c92570640")
+
